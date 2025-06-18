@@ -9,5 +9,5 @@ export interface Song {
 export interface Playlist {
   nombre: string;
   descripcion: string;
-  canciones: Song[];
+  canciones?: Song[];
 }
