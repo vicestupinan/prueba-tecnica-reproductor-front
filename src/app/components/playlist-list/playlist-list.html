@@ -1,0 +1,58 @@
+<div class="mb-4 px-4">
+  <input
+    [(ngModel)]="busqueda"
+    (ngModelChange)="buscarPlaylist()"
+    type="text"
+    placeholder="Buscar por nombre..."
+    class="w-full border px-3 py-2 rounded"
+  />
+</div>
+
+<div class="p-4">
+  <div class="flex justify-between items-center mb-4">
+    <h2 class="text-2xl font-bold">Listas de reproducción</h2>
+    <button
+      class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+      [routerLink]="['/crear']"
+    >
+      Crear nueva lista
+    </button>
+  </div>
+
+  <div *ngIf="playlists.length === 0" class="text-gray-500">
+    No hay listas de reproducción disponibles.
+  </div>
+
+  <ul class="space-y-4">
+    <li
+      *ngFor="let playlist of playlists"
+      class="p-4 bg-white shadow rounded-lg"
+    >
+      <div class="flex justify-between items-start">
+        <div>
+          <h3 class="text-lg font-semibold">{{ playlist.nombre }}</h3>
+          <p class="text-sm text-gray-600">{{ playlist.descripcion }}</p>
+        </div>
+
+        <button
+          (click)="confirmarEliminacion(playlist.nombre)"
+          class="text-red-500 hover:text-red-700 text-sm ml-4"
+        >
+          Eliminar
+        </button>
+      </div>
+
+      <div
+        *ngIf="playlist.canciones && playlist.canciones.length > 0"
+        class="mt-2"
+      >
+        <p class="text-sm font-medium">Canciones:</p>
+        <ul class="list-disc list-inside text-sm">
+          <li *ngFor="let song of playlist.canciones">
+            {{ song.titulo }} - {{ song.artista }}
+          </li>
+        </ul>
+      </div>
+    </li>
+  </ul>
+</div>
