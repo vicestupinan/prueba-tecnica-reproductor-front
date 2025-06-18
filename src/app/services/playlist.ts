@@ -10,7 +10,7 @@ export class PlaylistService {
 
   private http = inject(HttpClient);
 
-  private baseUrl = 'http://localhost:8080/playlists';
+  private baseUrl = 'http://localhost:8080/lists';
   
   private authHeaders = new HttpHeaders({
     Authorization: 'Basic ' + btoa('admin:admin123'),
