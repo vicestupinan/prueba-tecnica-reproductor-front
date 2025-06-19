@@ -37,3 +37,7 @@ cd prueba-tecnica-reproductor-front
 npm install
 ng serve
 ```
+
+Acceso al proyecto en http://localhost:4200
+
+---
